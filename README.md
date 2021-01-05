@@ -62,8 +62,9 @@ followed by options, menu filename or build-config-names.
 
 The top-level sub-command proposed by `cooker` is:
 
-- `cooker cook <menu-file> [<build-configs>...]`: does the whole production job from the
-  initial configuration and downloading up to the final image(s).
+- `cooker cook [--sdk] <menu-file> [<build-configs>...]`: does the whole production job from the
+  initial configuration and downloading up to the final image(s). With the `--sdk` option on the
+  command line, `cooker` will also build the cross-compiler toolchain and headers.
 
 In fact, `cooker cook` is equivalent to a collection of low-level commands:
 
@@ -77,10 +78,9 @@ In fact, `cooker cook` is equivalent to a collection of low-level commands:
 - `cooker generate`: prepare the build-dir and configuration files (`local.conf`,
   `bblayers.conf`, `template.conf`) needed by Yocto Project.
 
-- `cooker build [--sdk] [<build-configs>...]` runs `bitbake` to produce the given
+- `cooker build [<build-configs>...]` runs `bitbake` to produce the given
   build-configs. If no build-config is indicated on the command line, `cooker`
-  builds all the build-configs of the menu file. With the `--sdk` option on the
-  command line, `cooker` will also build the cross-compiler toolchain and headers.
+  builds all the build-configs of the menu file.
 
 Each time you do some changes in the menu file, you may need to call:
 
